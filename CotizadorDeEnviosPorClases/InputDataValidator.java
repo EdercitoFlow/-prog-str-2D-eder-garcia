@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class inputDataValidator {
+public class InputDataValidator {
     public int getValidInt(Scanner scanner, String msg){
         int value;
         while(true){
