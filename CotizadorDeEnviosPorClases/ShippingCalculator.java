@@ -1,25 +1,42 @@
-public class ShippingCalculator{
+public class ShippingCalculator {
 
-    public double pesoKg;
-    public int distanciaKm;
-    public int tipoServicio;
-    public boolean esZonaRemota;
-    private final double IVA=0.16;
-    private final double PREICO_ESTANDAR=
-    private final double PRECIO_EXPRESS=90;
+    private final double IVA = 0.16;
+    private final double PRECIO_ESTANDAR = 50;
+    private final double PRECIO_EXPRESS = 90;
+
+    public double calcularSubtotal(double pesoKg, int distanciaKm, int tipoServicio, boolean esZonaRemota) {
+
+        double subtotal = 0;
+
+        if (tipoServicio == 1) {
+            subtotal += PRECIO_ESTANDAR;
+        } else {
+            subtotal += PRECIO_EXPRESS;
+        }
+
+        subtotal += 12 * pesoKg;
 
 
+        if (distanciaKm <= 50) {
+            subtotal += 20;
+        } else if (distanciaKm <= 200) {
+            subtotal += 60;
+        } else {
+            subtotal += 120;
+        }
 
-    double calcularSubtotal(double pesoKg, int distanciaKm, int tipoServicio, boolean zonaRemota){
-        return 0;
+        if (esZonaRemota) {
+            subtotal += subtotal * 0.10;
+        }
+
+        return subtotal;
     }
 
-    double calcularIVA(double subtotal){
-        return 0;
+    public double calcularIVA(double subtotal) {
+        return subtotal * IVA;
     }
 
-    double calcularTotal(double subtotal, double iva){
-        return subtotal+calcularIVA();
+    public double calcularTotal(double subtotal, double iva) {
+        return subtotal + iva;
     }
-
 }
