@@ -1,23 +1,23 @@
-    import java.util.Scanner;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        InputDataValidator inputDataValidator = new InputDataValidator();
+        InputDataValidator InputDataValidator = new InputDataValidator();
 
-        double pesoKg = inputDataValidator.leerDoubleEnRango(sc, "Ingresa el peso en kg:", 0.1, 50.0);
-        int distanciaKm = inputDataValidator.leerIntEnRango(sc, "Ingresa la distancia en km:", 1, 2000);
-        int tipoServicio = inputDataValidator.leerIntEnRango(sc, "Ingresa el tipo de servicio (1 = Estandar, 2 = Express):", 1, 2);
+        double pesoKg = InputDataValidator.leerDoubleEnRango(sc, "Ingresa el peso en kg:", 0.1, 50.0);
+        int distanciaKm = InputDataValidator.leerIntEnRango(sc, "Ingresa la distancia en km:", 1, 2000);
+        int tipoServicio = InputDataValidator.leerIntEnRango(sc, "Ingresa el tipo de servicio (1 = Estandar, 2 = Express):", 1, 2);
 
-        boolean esZonaRemota = inputDataValidator.leerBoolean(sc, "¿Es zona remota?");
-        ShippingCalculator calculator = new ShippingCalculator();
+        boolean esZonaRemota = InputDataValidator.leerBoolean(sc, "¿Es zona remota?");
+        ShippingCalculator Shippingcalculator = new ShippingCalculator();
 
-        double subtotal = calculator.calcularSubtotal(pesoKg, distanciaKm, tipoServicio, esZonaRemota);
+        double subtotal = Shippingcalculator.calcularSubtotal(pesoKg, distanciaKm, tipoServicio, esZonaRemota);
 
-        double iva = calculator.calcularIVA(subtotal);
-        double total = calculator.calcularTotal(subtotal, iva);
+        double iva = Shippingcalculator.calcularIVA(subtotal);
+        double total = Shippingcalculator.calcularTotal(subtotal, iva);
 
         imprimirTicket(pesoKg, distanciaKm, tipoServicio, esZonaRemota, subtotal, iva, total);
     }
